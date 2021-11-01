@@ -102,8 +102,7 @@
        */
       function printDocTitle() {
         gapi.client.storage.buckets.get({
-         "bucket": "walkme_test_bucket",
-         "resource": {}
+         "bucket": "walkme_test_bucket"
       }).then(function(response) {
         var doc = response.result;
         var title = doc.id;
