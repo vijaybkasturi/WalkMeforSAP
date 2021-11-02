@@ -15,7 +15,7 @@
   }
   function loadClient() {
     console.log('loading client');
-    gapi.client.setApiKey("AIzaSyA5Nf6khZvCx2kgdVhlNGA2Xv80C2uvC3w");
+    //  gapi.client.setApiKey("AIzaSyA5Nf6khZvCx2kgdVhlNGA2Xv80C2uvC3w");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/storage/v1/rest")
         .then(function(response) { console.log("loading client Response", response); console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
@@ -23,14 +23,16 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     console.log('executing client');
-    // walkme_test_bucket/poc4/a2fa441a3f0b442fb88b536dedd8b8b4/walkme_a2fa441a3f0b442fb88b536dedd8b8b4_https.js
-    fetch('https://storage.googleapis.com/storage/v1/b/walkme_test_bucket/o/poc4/a2fa441a3f0b442fb88b536dedd8b8b4/walkme_a2fa441a3f0b442fb88b536dedd8b8b4_https.js', {
-  mode: 'cors',
-  headers: {
-    'Access-Control-Allow-Origin':'*'
-  }
-}) .then(res => res.text())          // convert to plain text
-  .then(text => console.log('returned response is: ' , text)) ; // then log it out
+    return gapi.client.storage.buckets.get({
+      "bucket": "walkme_test_bucket"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+         
+    .then(jsondata => console.log('Returned response is: ') ; console.log(jsondata)) ;
   }
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
