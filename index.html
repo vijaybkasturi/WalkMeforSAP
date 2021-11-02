@@ -24,7 +24,7 @@
   function execute() {
     console.log('executing client');
     return gapi.client.storage.buckets.get({
-      "bucket": "dasinfra-sap-business-poc4-walkme"
+      "bucket": "walkme_test_bucket"
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
