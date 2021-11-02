@@ -30,8 +30,7 @@
     'Access-Control-Allow-Origin':'*'
   }
 })
-  .then(response => response.json())
-    .then(jsondata => console.log('Returned response is: ') ; console.log(jsondata)) ;
+      .then(response => console.log('Returned response is: ') ; console.log(response); ) ;
   }
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
