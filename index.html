@@ -30,8 +30,7 @@
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
               },
-              function(err) { console.error("Execute error", err); });
-         
+              function(err) { console.error("Execute error", err); })
     .then(jsondata => console.log('Returned response is: ') ; console.log(jsondata)) ;
   }
   gapi.load("client:auth2", function() {
