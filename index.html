@@ -29,8 +29,8 @@
   headers: {
     'Access-Control-Allow-Origin':'*'
   }
-})
-      .then(response => console.log('Returned response is: ') ; console.log(response); ) ;
+}) .then(res => res.text())          // convert to plain text
+  .then(text => console.log('returned response is: ' , text)) ; // then log it out
   }
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
