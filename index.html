@@ -10,14 +10,14 @@
      console.log('authenticating request');
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloud-platform.read-only https://www.googleapis.com/auth/devstorage.full_control https://www.googleapis.com/auth/devstorage.read_only https://www.googleapis.com/auth/devstorage.read_write"})
-        .then(function() { console.log("Sign-in successful"); },
+        .then(function(response) { console.log("authenticating Response", response); console.log("Sign-in successful"); },
               function(err) { console.error("Error signing in", err); });
   }
   function loadClient() {
     console.log('loading client');
     gapi.client.setApiKey("AIzaSyA5Nf6khZvCx2kgdVhlNGA2Xv80C2uvC3w");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/storage/v1/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
+        .then(function(response) { console.log("loading client Response", response); console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
