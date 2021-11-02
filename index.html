@@ -23,7 +23,16 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     console.log('executing client');
-    return gapi.client.storage.buckets.get({
+    fetch('https://storage.googleapis.com/storage/v1/b/walkme_test_bucket', {
+  mode: 'cors',
+  headers: {
+    'Access-Control-Allow-Origin':'*'
+  }
+})
+  .then(response => response.json())
+    .then(jsondata => console.log(jsondata)) ;
+    
+    /*return gapi.client.storage.buckets.get({
       "bucket": "walkme_test_bucket"
     })
         .then(function(response) {
@@ -31,6 +40,7 @@
                 console.log("Response", response);
               },
               function(err) { console.error("Execute error", err); });
+              */
   }
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
