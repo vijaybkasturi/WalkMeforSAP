@@ -33,6 +33,23 @@
               function(err) { console.error("Execute error", err); })
     .then(jsondata => function() {console.log('Returned response is: ') ; console.log(jsondata);});
   }
+  
+  //
+  function getObjects() {
+    console.log('Trying to retrieve Objects inside bucket');
+    return gapi.client.storage.objects.get({
+      "bucket": "walkme_test_bucket" ,
+      "object" : "poc4/a2fa441a3f0b442fb88b536dedd8b8b4/walkme_a2fa441a3f0b442fb88b536dedd8b8b4_https.js" })
+    .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Object Response is: ", response);
+              },
+              function(err) { console.error("Execute error", err); })
+    .then(jsondata => function() {console.log('Returned object response is: ') ; console.log(jsondata);}
+  }
+  
+  
+  // load client
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
     gapi.auth2.init({client_id: "216353090233-mc2hiucjjmlroumidovtms310kll3iek.apps.googleusercontent.com"});
@@ -40,3 +57,4 @@
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <button onclick="getBucketDetails()">Get Bucket Details</button>
+<button onclick="getObjects()">Pull Contents</button>
