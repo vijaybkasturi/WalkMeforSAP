@@ -31,7 +31,7 @@
                 console.log("Response", response);
               },
               function(err) { console.error("Execute error", err); })
-    .then(jsondata => console.log('Returned response is: ') ; console.log(jsondata)) ;
+    .then(jsondata => function() {console.log('Returned response is: ') ; console.log(jsondata);});
   }
   gapi.load("client:auth2", function() {
     console.log('loading GAPI')
