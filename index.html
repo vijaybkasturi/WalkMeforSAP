@@ -44,8 +44,14 @@
                 // Handle the results here (response.result has the parsed body).
                 console.log("Object Response is: ", response);
               },
-              function(err) { console.error("Execute error", err); })
-    .then(jsondata => function() {console.log('Returned object response is: ') ; console.log(jsondata);});
+              function(err) { console.error("Execute error", err); });
+    
+    var url = response.mediaLink;
+    console.log('media link: ', url );
+   
+    var restRequest = gapi.client.request({'path': url });
+    
+    console.log('Requ response is: ', restRequest );
   }
   
   
