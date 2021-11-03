@@ -21,7 +21,7 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
+  function getBucketDetails() {
     console.log('executing client');
     return gapi.client.storage.buckets.get({
       "bucket": "walkme_test_bucket"
@@ -39,4 +39,4 @@
   });
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
-<button onclick="execute()">execute</button>
+<button onclick="getBucketDetails()">Get Bucket Details</button>
